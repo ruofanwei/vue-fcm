@@ -8,28 +8,10 @@ const pwaOptions = {
   base: "/",
   includeAssets: ["/favicon.png"],
   manifest: {
-    name: "YT Playlist Notifier",
-    short_name: "YT Playlist Notifier",
-    description: "Get notifications when YouTube playlists are updated.",
+    name: "notification",
+    short_name: "notification",
+    description: "Get notifications",
     theme_color: "#ced4da",
-    icons: [
-      {
-        src: "icon-192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        src: "icon-512.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
-      {
-        src: "icon-512-maskable.png",
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "maskable",
-      },
-    ],
   },
   srcDir: "src/service",
   strategies: "injectManifest",

@@ -2,7 +2,7 @@
 import ButtonRepo from "@/components/ButtonRepo.vue";
 import { inject, reactive } from "vue";
 import { getMessaging, onMessage } from "firebase/messaging";
-// const messaging = inject("messaging");
+//const messaging = inject("messaging");
 const notification = reactive({
   title: '',
   body: ''
@@ -13,22 +13,11 @@ onMessage(messaging, (payload) => {
   notification.title = payload.notification.title
   notification.body = payload.notification.body
 });
-if ("serviceWorker" in navigator) {
-  window.navigator.serviceWorker.register("/firebase-messaging-sw.js").then(
-    function (registration) {
-      console.log("Service worker registration succeeded:", registration);
-    },
-    /*catch*/ function (error) {
-      console.log("Service worker registration failed:", error);
-    }
-  );
-} else {
-  console.log("Service workers are not supported.");
-}
+
 </script>
 
 <template>
-  <div class="bg-gray-50">
+  <div class="bg-gray-50 h-screen">
     <div
       class="
         mx-auto
@@ -39,7 +28,7 @@ if ("serviceWorker" in navigator) {
         lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8
       "
     >
-      <h2
+      <!-- <h2
         class="
           text-3xl
           font-bold
@@ -54,10 +43,10 @@ if ("serviceWorker" in navigator) {
         <span class="text-indigo-600 text-xl">title: {{notification.title}}</span>
         <br />
         <span class="text-indigo-600 text-xl">body: {{notification.body}}</span>
-      </h2>
+      </h2> -->
       <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
         <div class="inline-flex rounded-md shadow">
-          <router-link
+          <!-- <router-link
             to="/about"
             class="
               inline-flex
@@ -79,7 +68,7 @@ if ("serviceWorker" in navigator) {
               focus:outline-none
             "
             >Next Page</router-link
-          >
+          > -->
         </div>
         <ButtonRepo />
       </div>

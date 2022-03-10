@@ -62,7 +62,7 @@ getToken(messaging, { vapidKey: `${import.meta.env.VITE_VAPID_KEY}` })
         focus:outline-none
       "
     >
-      Send Notification
+      Send Notification From Background
     </button>
   </div>
 </template>
