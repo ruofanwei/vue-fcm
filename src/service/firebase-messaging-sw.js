@@ -19,19 +19,18 @@ importScripts(
 importScripts(
   "https://www.gstatic.com/firebasejs/9.2.0/firebase-messaging-compat.js"
 );
-
+import { precacheAndRoute } from "workbox-precaching";
 // Initialize the Firebase app in the service worker by passing in
 // your app's Firebase config object.
 // https://firebase.google.com/docs/web/setup#config-object
 firebase.initializeApp({
-  apiKey: "AIzaSyCw3Wk8qI-MlUHDmi6iDGXnFu7FUM64i8E",
-  authDomain: "fcm-project-d7598.firebaseapp.com",
-  databaseURL: "https://fcm-project-d7598.firebaseio.com",
-  projectId: "fcm-project-d7598",
-  storageBucket: "fcm-project-d7598.appspot.com",
-  messagingSenderId: "922348804990",
-  appId: "1:922348804990:web:32cd62b48ff84f9378b12f",
-  measurementId: "G-JMT5XLTL0S",
+  apiKey: `${import.meta.env.VITE_API_KEY}`,
+  authDomain: `${import.meta.env.VITE_AUTHDOMAIN}`,
+  projectId: `${import.meta.env.VITE_PROJECTID}`,
+  storageBucket: `${import.meta.env.VITE_STORAGEBUCKET}`,
+  messagingSenderId: `${import.meta.env.VITE_MESSAGINGSENDERID}`,
+  appId: `${import.meta.env.VITE_APPID}`,
+  measurementId: `${import.meta.env.VITE_MEASUREMENTID}`,
 });
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
@@ -60,3 +59,10 @@ messaging.onBackgroundMessage(function (payload) {
 
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
+
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") self.skipWaiting();
+});
+// self.__WB_MANIFEST is default injection point
+precacheAndRoute(self.__WB_MANIFEST);

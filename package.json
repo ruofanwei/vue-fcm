@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "firebase": "^9.6.8",
+    "vite-plugin-pwa": "^0.11.13",
     "vue": "^3.2.31",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "workbox-precaching": "^6.5.1"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.5.0",
