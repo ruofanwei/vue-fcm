@@ -14,6 +14,8 @@ onMessage(messaging, (payload) => {
   notification.body = payload.notification.body
 });
 
+console.log("notification from send ", notification)
+
 </script>
 
 <template>
